@@ -115,6 +115,21 @@ test("Test - Month-Only expression", function () {
 
         expect(result.start).toBeDate(new Date(2021, 5 - 1, 1, 12));
     });
+
+    testSingleCase(chrono, "Jan", new Date(2020, 11 - 1, 22), (result) => {
+        expect(result.text).toContain("Jan");
+
+        expect(result.start).not.toBeNull();
+        expect(result.start.get("year")).toBe(2021);
+        expect(result.start.get("month")).toBe(1);
+        expect(result.start.get("day")).toBe(1);
+
+        expect(result.start.isCertain("year")).toBe(false);
+        expect(result.start.isCertain("month")).toBe(true);
+        expect(result.start.isCertain("day")).toBe(false);
+
+        expect(result.start).toBeDate(new Date(2021, 1 - 1, 1, 12));
+    });
 });
 
 test("Test - Month-Only Range expression", () => {
@@ -199,7 +214,7 @@ test("Test - Month expression in context", function () {
         expect(result.start).toBeDate(new Date(2012, 9 - 1, 1, 12));
     });
 
-    testSingleCase(chrono, "By Angie Mar November 2019", (result) => {
+    testSingleCase(chrono, "By Angie November 2019", (result) => {
         expect(result.text).toBe("November 2019");
 
         expect(result.start).not.toBeNull();

@@ -405,8 +405,4 @@ test("Test - Random negative text", () => {
     testUnexpectedResult(chrono, "noway");
 
     testUnexpectedResult(chrono, "knowledge");
-
-    testUnexpectedResult(chrono, "mar");
-
-    testUnexpectedResult(chrono, "jan");
 });

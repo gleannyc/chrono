@@ -35,8 +35,7 @@ export default class ENMonthNameParser extends AbstractParserWithWordBoundaryChe
     innerExtract(context: ParsingContext, match: RegExpMatchArray) {
         const monthName = match[MONTH_NAME_GROUP].toLowerCase();
 
-        // skip some unlikely words "jan", "mar", ..
-        if (match[0].length <= 3 && !FULL_MONTH_NAME_DICTIONARY[monthName]) {
+        if (match[0].length <= 3 && !MONTH_DICTIONARY[monthName]) {
             return null;
         }
 
